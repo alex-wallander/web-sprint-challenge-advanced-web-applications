@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -11,6 +12,7 @@ const Login = () => {
   }
 
   const [form, setForm] = useState(initialLogin);
+  const {push} = useHistory();
 
   const handleChange = (e) => {
     setForm({
@@ -24,7 +26,8 @@ const Login = () => {
     axios
     .post('http://localhost:5000/api/login', form )
     .then(res => {
-      localStorage.setItem('token', res.data.payload)
+      localStorage.setItem('token', res.data.payload);
+      push('/colors');
     })
     .catch(err => {
       console.log(err)
