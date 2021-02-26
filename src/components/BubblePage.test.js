@@ -1,9 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
+import { mockData } from '../mocks/handlers'
+
+// jest.mock(mockData)
 
 test("Renders BubblePage without errors", () => {
   // Finish this test
+  
+render(<BubblePage />)
 });
 
 test("Fetches data and renders the bubbles on mounting", () => {

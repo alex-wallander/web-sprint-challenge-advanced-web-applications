@@ -12,7 +12,7 @@ const Login = () => {
   }
 
   const [form, setForm] = useState(initialLogin);
-  const {push} = useHistory();
+  const { push } = useHistory();
 
   const handleChange = (e) => {
     setForm({
@@ -27,32 +27,19 @@ const Login = () => {
     .post('http://localhost:5000/api/login', form )
     .then(res => {
       localStorage.setItem('token', res.data.payload);
-      push('/colors');
+      push('/bubbles');
     })
     .catch(err => {
       console.log(err)
     })
   }
 
-  useEffect(()=>{
-    axios
-      .delete(`http://localhost:5000/api/colors/1`, {
-        headers:{
-          'authorization': "ahuBHejkJJiMDhmODZhZi0zaeLTQ4ZfeaseOGZgesai1jZWYgrTA07i73Gebhu98"
-        }
-      })
-      .then(res=>{
-        axios.get(`http://localhost:5000/api/colors`, {
-          headers:{
-            'authorization': ""
-          }
-        })
-        .then(res=> {
-          console.log(res);
-        });
-        console.log(res);
-      })
-  });
+  
+
+  useEffect(() => {  
+    // make a post request to retrieve a token from the api
+    // when you have handled the token, navigate to the BubblePage route at the path "/bubbles"
+  })
 
   return (
     <>

@@ -4,7 +4,7 @@ import axios from "axios";
 //Build and export a function used to send in our authorization token
 
 export const axiosWithAuth = () => {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
 
     return axios.create({
         headers: {
